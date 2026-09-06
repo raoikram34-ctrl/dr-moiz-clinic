@@ -18,8 +18,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Moiz Dental Clinic",
-  description: "Premium and Minimal Dental Care",
+  title: "Dr. Moiz Dental Clinic | Premium Aesthetic & Restorative Dentistry",
+  description: "Experience premium, pain-free dental care at Dr. Moiz Dental Clinic in Karachi. Specializing in dental implants, full mouth rehabilitation, and smile makeovers.",
 };
 
 export default function RootLayout({
