@@ -1,26 +1,108 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  
+  /* Map Next.js font variables to Tailwind */
+  --font-sans: var(--font-sans-serif, system-ui, sans-serif);
+  --font-serif: var(--font-serif, Georgia, serif);
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Theme Colors */
+    --background: #F6EFE8; 
+    --foreground: #1c1917; 
+    --primary: #2462EA;   
+    --secondary: #FCB975; 
+  }
+  
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    @apply antialiased;
+  }
+
+  /* =========================================
+     Responsive Global Headings (H1 - H6)
+     ========================================= */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-bold text-primary tracking-tight;
+  }
+
+  /* H1: Main Page Titles (Hero Section) */
+  h1 { 
+    @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight mb-4; 
+  }
+  
+  /* H2: Main Section Headings (About, Expertise) */
+  h2 { 
+    @apply text-3xl md:text-4xl lg:text-5xl leading-tight mb-4; 
+  }
+  
+  /* H3: Sub-section Headings */
+  h3 { 
+    @apply text-2xl md:text-3xl lg:text-4xl leading-snug mb-3; 
+  }
+  
+  /* H4: Smaller block headings */
+  h4 { 
+    @apply text-xl md:text-2xl lg:text-3xl leading-snug mb-2; 
+  }
+  
+  /* H5 & H6: Utility headings */
+  h5 { 
+    @apply text-lg md:text-xl lg:text-2xl leading-normal mb-2; 
+  }
+  h6 { 
+    @apply text-base md:text-lg lg:text-xl leading-normal mb-2; 
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* =========================================
+     Custom Typography Variants
+     ========================================= */
+     
+  /* Standard paragraph text */
+  .text-body {
+    @apply text-base md:text-lg leading-relaxed text-foreground/80;
+  }
+
+  /* Premium large text for intro paragraphs */
+  .text-lead {
+    @apply text-lg md:text-xl lg:text-2xl leading-relaxed text-foreground/90 font-medium;
+  }
+
+  /* Card Titles - Perfect for Expertise/Services grid */
+  .text-card-title {
+    @apply text-xl md:text-2xl font-semibold text-primary mb-2;
+  }
+
+  /* Card Descriptions - Clean layout for details like Fatima Jinnah Dental College BDS degree, achievements, and service descriptions */
+  .text-card-desc {
+    @apply text-sm md:text-base text-foreground/70 leading-relaxed;
+  }
+
+  /* Small uppercase headings for section eyebrows (e.g., "OUR EXPERTISE") */
+  .text-caption {
+    @apply text-xs md:text-sm text-secondary uppercase tracking-widest font-bold;
+  }
+
+  /* Subtle serif text to match the "Clinic" part of the logo */
+  .text-accent-serif {
+    @apply font-serif text-primary italic;
+  }
 }
+
+/* Minimalist Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb { background: #e2d9d1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--secondary); }
